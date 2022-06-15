@@ -16,28 +16,34 @@
     </header>
     <main>
         <div class="container">
-            <div class="col-4">
-                <form>
-                    <h2>Search for a City:</h2>
-                    <input type="text">
-                    <button id="newCity">Search</button>
-                </form>
-                <ul id=searchHistory>
+            <div class="row">
+                <div class="col-3">
+                    <form>
+                        <h2>Search for a City:</h2>
+                        <input type="text">
+                    </form>
+                    <button id="newCity" class="btn btn-primary">Search</button>
 
-                </ul>
-            </div>
-            <div class="col-8">
-                <div class="border border-dark">
-                    <!--current search info displayed here adding a p element for now-->
-                    <p>This is where the current locations weather will display</p>
+                    <ul id=searchHistory> </ul>
                 </div>
-                <h3>5-Day Forecast:</h3>
-                <div>
-                    <!--cards for 5day forecast go here-->
+
+
+                <div class="col-9 border border-dark">
+                    <div class="border border-dark">
+                        <!--current search info displayed here adding a p element for now-->
+                        <p>This is where the current locations weather will display</p>
+                    </div>
+                    <div>
+                        <h3>5-Day Forecast:</h3>
+                    </div>
+                    <div>
+                        <!--cards for 5day forecast go here-->
+                        this should stack
+                    </div>
                 </div>
             </div>
         </div>
-       
+
     </main>
     <!--JQuery link-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
