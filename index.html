@@ -5,40 +5,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+        integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     <title>WeatherAPI</title>
 </head>
 
 <body>
     <header>
-        <h1>Weather Dashboard</h1>
+        <h1 class="bg-primary text-light text-center">Weather Dashboard</h1>
     </header>
     <main>
-        <div>
-            <form>
-                <h2>Search for a City:</h2>
-                <input type="text">
-                <button id="newCity">Search</button>
-            </form>
-            <ul id=searchHistory>
+        <div class="container">
+            <div class="col-4">
+                <form>
+                    <h2>Search for a City:</h2>
+                    <input type="text">
+                    <button id="newCity">Search</button>
+                </form>
+                <ul id=searchHistory>
 
-            </ul>
-        </div>
-        <div>
-            <div>
-                <!--current search info displayed here-->
+                </ul>
             </div>
-            <h3>5-Day Forecast:</h3>
-            <div>
-                <!--cards for 5day forecast go here-->
+            <div class="col-8">
+                <div class="border border-dark">
+                    <!--current search info displayed here adding a p element for now-->
+                    <p>This is where the current locations weather will display</p>
+                </div>
+                <h3>5-Day Forecast:</h3>
+                <div>
+                    <!--cards for 5day forecast go here-->
+                </div>
             </div>
         </div>
+       
     </main>
-
-
+    <!--JQuery link-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
         crossorigin="anonymous"></script>
+
 </body>
 
 </html>
