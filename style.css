@@ -1,0 +1,7 @@
+.forecast {
+    background-color: brown;
+    width: 100%;
+}
+.forecast .col{
+    border: 1px solid white;
+}
