@@ -8,7 +8,7 @@ var myLink = "";
 
 $("#newCity").on("click", function () {
     var value = $(this).siblings("input").val();
-    console.log(value)
+    console.log("You searched for "+value)
 
     //fetch data from weather 
 
@@ -17,24 +17,24 @@ $("#newCity").on("click", function () {
         .then(function (data) {
             return data.json();
 
-        }).then(function (data) {
+        })
+        .then(function (data) {
             cityLat = data[0].lat;
             cityLon = data[0].lon;
-            myLink = "https://api.openweathermap.org/data/2.5/onecall?lat=" + cityLat + "&lon=" + cityLon + "&exclude={part}&appid=2b9bc0455fe9f94b38ffcf663b546cfe"
+            fetch("https://api.openweathermap.org/data/2.5/onecall?lat=" + cityLat + "&lon=" + cityLon + "&exclude={part}&appid=2b9bc0455fe9f94b38ffcf663b546cfe")
+            
+//this is where I am stuck.  Line 24 should return a promise, but when I console log it, I get nothing.  
+//Plan to proceed:  define functions that use the code in 16-20 and 21 through 24, then this should all look a little cleaner
+//and I can hopefully figure out how to get my weather data from the 2nd call
+//Once I have that data, I'll use it to create elements that display on the page.
 
-            console.log(myLink);
-
-            //fetch("https://api.openweathermap.org/data/2.5/onecall?lat=cityLat&lon={lon}&exclude={part}&appid=2b9bc0455fe9f94b38ffcf663b546cfe")
-
-
-            // console.log(data[0].lat)
-            //2nd call to other API
         })
     //2b9bc0455fe9f94b38ffcf663b546cfe   API KEY
-
-
 })
 
+
+
+//fetch(myLink).then(function(data){    console.log(data);})
 
 
 
