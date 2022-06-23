@@ -2,6 +2,7 @@
 var cityLat = "";
 var cityLon = "";
 var myLink = "";
+var today = new Date().toLocaleDateString();
 
 
 //add listener to search button
@@ -27,19 +28,29 @@ $("#newCity").on("click", function () {
                 })
                 .then(function (data) {
                     console.log(data);
-                    // display current weather
-                    var temp = data.current.temp
+                    var cityEl = $("<h3>").text(value +" " + today);
+                    $("#current-weather").append(cityEl);
+                    // display current weather, starting with temp
+                    //the data we have is in degrees kelvin, so the following converts and displays in farenheit
+                    var temp = Math.round(((data.current.temp)-273.15)*(9/5)+32);
                     var tempEl = $("<p>").text("temp: " + temp);
                     $("#current-weather").append(tempEl);
+                    //next display the wind speed and humidity
+                    var wind = data.current.wind_speed;
+                    var windEl = $("<p>").text("Wind: "+wind+" MPH");
+                    $("#current-weather").append(windEl);
+                    var humidity = data.current.humidity
+                    var humEl = $("<p>").text("Humidity: " + humidity +"%");
+                    $("#current-weather").append(humEl);
                     var uvi = data.current.uvi
                     var uviEl = $("<p>").text("uvi: " + uvi);
                     $("#current-weather").append(uviEl);
-                    var humidity = data.current.humidity
-                    var humEl = $("<p>").text("humidity: " + humidity);
+                   
                     $("#forecast").html("")
                     // 5-day forecast
                     for (i = 0; i < 5; i++) {
                         var daytemp = data.daily[i].temp.day
+                        daytemp = Math.round((daytemp-273.15)*(9/5)+32);
                         var dayUVI = data.daily[i].uvi
                         var dailydiv = $("<div>").addClass("col")
                         var tempEl = $("<p>").text("temp: " + daytemp)
