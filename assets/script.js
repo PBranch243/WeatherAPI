@@ -2,7 +2,8 @@
 var cityLat = "";
 var cityLon = "";
 var myLink = "";
-var today = new Date().toLocaleDateString();
+const date = new Date().toLocaleDateString();
+
 
 
 //add listener to search button
@@ -28,7 +29,7 @@ $("#newCity").on("click", function () {
                 })
                 .then(function (data) {
                     console.log(data);
-                    var cityEl = $("<h3>").text(value +" " + today);
+                    var cityEl = $("<h3>").text(value +" " + date);
                     $("#current-weather").append(cityEl);
                     // display current weather, starting with temp
                     //the data we have is in degrees kelvin, so the following converts and displays in farenheit
@@ -47,14 +48,26 @@ $("#newCity").on("click", function () {
                     $("#current-weather").append(uviEl);
                    
                     $("#forecast").html("")
-                    // 5-day forecast
-                    for (i = 0; i < 5; i++) {
+                    // 5-day forecast, starting with i=1 b/c i=0 gives todays weather and we want
+                    //the forecast to start with tomorrow
+                    for (i = 1; i < 6; i++) {
+                        //get daily data
                         var daytemp = data.daily[i].temp.day
                         daytemp = Math.round((daytemp-273.15)*(9/5)+32);
-                        var dayUVI = data.daily[i].uvi
+                        var dayWind = data.daily[i].wind_speed
+                        var dayHum = data.daily[i].humidity
+                        //create div to hold the days forecast
                         var dailydiv = $("<div>").addClass("col")
-                        var tempEl = $("<p>").text("temp: " + daytemp)
+                        //create the forcast elements and append them to the div
+                        
+                        var tempEl = $("<p>").text("Temp: " + daytemp)
+                        var windEl = $("<p>").text("Wind: "+ dayWind + " MPH")
+                        var humEl = $("<p>").text("Hum: " + dayHum+"%")
+                        
                         dailydiv.append(tempEl)
+                        dailydiv.append(windEl)
+                        dailydiv.append(humEl)
+                        //append the div to the page
                         $("#forecast").append(dailydiv)
 
 
