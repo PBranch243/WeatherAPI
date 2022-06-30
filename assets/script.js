@@ -15,7 +15,7 @@ $("#newCity").on("click", function () {
     //fetch data from weather 
 
     //make first call to get lat & lon
-    fetch("http://api.openweathermap.org/geo/1.0/direct?q=" + value + "&limit=1&appid=2b9bc0455fe9f94b38ffcf663b546cfe")
+    fetch("https://api.openweathermap.org/geo/1.0/direct?q=" + value + "&limit=1&appid=2b9bc0455fe9f94b38ffcf663b546cfe")
         .then(function (data) {
             return data.json();
 
